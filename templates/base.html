@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#6e8efb">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>{% block title %}My Store{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}?v=14.0">
+    {% block extra_head %}{% endblock %}
+    <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-bar">
+            <!-- Main row: Hamburger, Brand, Search (desktop), Actions -->
+            <div class="header-row header-row-main">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="hamburger-icon">☰</span>
+                </button>
+
+                <a class="brand" href="{% url 'product_list' %}">My&nbsp;Store</a>
+
+                <!-- Search inline on desktop -->
+                <form action="{% url 'product_search' %}" method="get" class="search desktop-search">
+                    <input type="search" name="query" placeholder="Search products..." aria-label="Search products">
+                </form>
+
+                <!-- Navigation inline on desktop -->
+                <nav class="primary-nav desktop-nav" aria-label="Primary">
+                    <div class="categories-scroll">
+                        <a class="nav-link{% if not request.resolver_match.url_name or request.resolver_match.url_name == 'product_list' %} is-active{% endif %}"
+                            href="{% url 'product_list' %}">All</a>
+                        {% for category in categories %}
+                        <a class="nav-link" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                        {% endfor %}
+                    </div>
+                </nav>
+
+                <div class="header-actions">
+                    {% if user.is_authenticated %}
+                    <a class="action-link" href="{% url 'wishlist' %}" title="Wishlist">
+                        <span class="mobile-hidden">Wishlist</span>
+                        <span class="desktop-hidden">❤️</span>
+                    </a>
+                    <a class="action-link" href="{% url 'cart_detail' %}" title="Bag">
+                        <span class="mobile-hidden">Bag</span>
+                        <span class="desktop-hidden">🛍</span>
+                        {% if cart %} ({{ cart|length }}){% endif %}
+                    </a>
+                    <a class="button ghost mobile-hidden" href="{% url 'profile' %}">Profile</a>
+                    <a class="button primary" href="{% url 'logout' %}" title="Logout">
+                        <span class="mobile-hidden">Logout</span>
+                        <span class="desktop-hidden">↪</span>
+                    </a>
+                    {% else %}
+                    <a class="button ghost" href="{% url 'login' %}">Login</a>
+                    <a class="button primary" href="{% url 'signup' %}">
+                        <span class="mobile-hidden">Sign up</span>
+                        <span class="desktop-hidden">+</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Mobile only: Search row -->
+            <div class="header-row header-row-search">
+                <form action="{% url 'product_search' %}" method="get" class="search">
+                    <input type="search" name="query" placeholder="Search products..." aria-label="Search products">
+                </form>
+            </div>
+
+            <!-- Mobile only: Navigation (collapsible) -->
+            <nav class="primary-nav mobile-nav" id="primaryNav" aria-label="Primary">
+                <div class="categories-scroll">
+                    <a class="nav-link{% if not request.resolver_match.url_name or request.resolver_match.url_name == 'product_list' %} is-active{% endif %}"
+                        href="{% url 'product_list' %}">All</a>
+                    {% for category in categories %}
+                    <a class="nav-link" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        // Mobile menu toggle
+        (function () {
+            const toggle = document.getElementById('mobileMenuToggle');
+            const nav = document.getElementById('primaryNav');
+
+            if (toggle && nav) {
+                toggle.addEventListener('click', function () {
+                    const isOpen = nav.classList.toggle('is-open');
+                    toggle.setAttribute('aria-expanded', isOpen);
+                    toggle.querySelector('.hamburger-icon').textContent = isOpen ? '✕' : '☰';
+                });
+
+                // Close menu when clicking on a nav link
+                nav.querySelectorAll('.nav-link').forEach(function (link) {
+                    link.addEventListener('click', function () {
+                        nav.classList.remove('is-open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.querySelector('.hamburger-icon').textContent = '☰';
+                    });
+                });
+            }
+        })();
+    </script>
+
+    <main class="site-main container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-bar">
+            <p>© {{ now|date:"Y" }} My Store</p>
+            <div class="footer-links">
+                <a href="{% url 'product_list' %}">Products</a>
+                {% if user.is_authenticated %}<a href="{% url 'profile' %}">Account</a>{% endif %}
+            </div>
+        </div>
+    </footer>
+    {% block extra_scripts %}{% endblock %}
+</body>
+
+</html>

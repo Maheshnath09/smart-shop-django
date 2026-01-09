@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Wishlist{% endblock %}
+{% block content %}
+<h1 class="page-title">Your wishlist</h1>
+<div class="grid product-grid mt-2">
+    {% for item in wishlist_items %}
+    <article class="card">
+        <div class="card-media">
+            {% if item.product.image %}
+            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <div class="product-meta">
+                <div class="clamp-1">{{ item.product.name }}</div>
+                <div class="muted">₹{{ item.product.price }}</div>
+            </div>
+            <a href="{{ item.product.get_absolute_url }}" class="button block">View</a>
+        </div>
+    </article>
+    {% empty %}
+    <p class="muted">Your wishlist is empty.</p>
+    {% endfor %}
+</div>
+{% endblock %}

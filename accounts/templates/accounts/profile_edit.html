@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+<div class="stack">
+    <div class="card">
+        <div class="card-body">
+            <div class="spaced">
+                <h1 class="page-title">Edit profile</h1>
+                <a class="button ghost" href="{% url 'profile' %}">Cancel</a>
+            </div>
+            <hr>
+            <form method="post" class="stack">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="id_full_name">Full name</label>
+                        {{ form.full_name }}
+                    </div>
+                    <div class="form-field">
+                        <label for="id_gender">Gender</label>
+                        {{ form.gender }}
+                    </div>
+                    <div class="form-field">
+                        <label for="id_date_of_birth">Date of birth</label>
+                        {{ form.date_of_birth }}
+                    </div>
+                    <div class="form-field">
+                        <label for="id_location">Location</label>
+                        {{ form.location }}
+                    </div>
+                    <div class="form-field">
+                        <label for="id_alternate_mobile">Alternate mobile</label>
+                        {{ form.alternate_mobile }}
+                    </div>
+                    <div class="form-field">
+                        <label for="id_hint_name">Hint name</label>
+                        {{ form.hint_name }}
+                    </div>
+                    <div class="form-field" style="grid-column: span 3;">
+                        <label for="id_email">Email</label>
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="spaced">
+                    <div></div>
+                    <button type="submit" class="button primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

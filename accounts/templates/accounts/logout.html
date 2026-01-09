@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Logged out{% endblock %}
+{% block content %}
+<div class="container" style="max-width:560px;">
+    <div class="card">
+        <div class="card-body" style="text-align:center;">
+            <h1 class="page-title">You are logged out</h1>
+            <p class="muted">You have successfully logged out of your account.</p>
+            <div class="cluster mt-3" style="justify-content:center;">
+                <a href="{% url 'login' %}" class="button primary">Login again</a>
+                <a href="{% url 'product_list' %}" class="button">Back to store</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

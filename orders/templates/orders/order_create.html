@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Checkout{% endblock %}
+{% block content %}
+<div class="checkout-grid">
+    <div class="checkout-form-card">
+        <div class="card-body">
+            <h1 class="page-title">Checkout</h1>
+            <form method="post" class="stack">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="order-items-section">
+                    <h2 class="section-title">Bag items</h2>
+                    <div class="order-items">
+                        {% for item in cart %}
+                        <div class="order-item">
+                            <div class="item-info">
+                                <div class="item-name">{{ item.product.name }}</div>
+                                <div class="item-details">
+                                    <span>₹{{ item.price }} × {{ item.quantity }}</span>
+                                </div>
+                            </div>
+                            <div class="item-total">₹{{ item.total_price }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <button type="submit" class="button primary block">Place order</button>
+            </form>
+        </div>
+    </div>
+    <div class="order-summary-card">
+        <div class="card-body">
+            <h2 class="page-title">Order summary</h2>
+            <div class="summary-stack">
+                <div class="summary-row">
+                    <span class="summary-label">Subtotal</span>
+                    <span class="summary-value">₹{{ cart.get_total_price }}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Shipping</span>
+                    <span class="summary-value">Free</span>
+                </div>
+                <hr>
+                <div class="summary-row total-row">
+                    <span class="summary-label">Total</span>
+                    <span class="summary-value total-amount">₹{{ cart.get_total_price }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

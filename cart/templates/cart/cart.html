@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Bag{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1 class="page-title">Your bag</h1>
+        <div class="cart-items">
+            {% for item in cart %}
+            <div class="cart-item">
+                <div class="cart-item-info">
+                    <h3 class="cart-item-name">{{ item.product.name }}</h3>
+                    <div class="cart-item-price">₹{{ item.price }} each</div>
+                </div>
+                <div class="cart-item-controls">
+                    <form method="post" action="{% url 'cart_add' item.product.id %}" class="quantity-form">
+                        {% csrf_token %}
+                        {{ item.update_quantity_form|crispy }}
+                        <button type="submit" class="button small">Update</button>
+                    </form>
+                    <div class="cart-item-total">₹{{ item.total_price }}</div>
+                    <a href="{% url 'cart_remove' item.product.id %}" class="button small remove-btn">Remove</a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty-cart">
+                <p class="muted">Your bag is empty.</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if cart %}
+        <div class="cart-total">
+            <div class="total-row">
+                <span>Total:</span>
+                <span class="total-amount">₹{{ cart.get_total_price }}</span>
+            </div>
+        </div>
+        {% endif %}
+        <div class="cart-actions">
+            <a href="{% url 'product_list' %}" class="button">Continue shopping</a>
+            <a href="{% url 'order_create' %}" class="button primary">Place order</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

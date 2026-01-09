@@ -1,0 +1,78 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block title %}Products{% endblock %}
+{% block content %}
+
+{% if recommendations and not category and not search_query %}
+<section class="recommendations-section">
+    <h2 class="section-title">Recommended for You</h2>
+    <div class="grid product-grid recommendations-grid">
+        {% for product in recommendations %}
+        <article class="card">
+            <div class="card-media">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                <img src="{% static 'images/placeholder.png' %}" alt="Placeholder">
+                {% endif %}
+                {% if user.is_authenticated %}
+                {% if product.id in wishlist_product_ids %}
+                <a class="icon-button active" href="{% url 'wishlist_remove' product.id %}" title="Remove from wishlist"
+                    aria-label="Remove from wishlist">♥</a>
+                {% else %}
+                <a class="icon-button" href="{% url 'wishlist_add' product.id %}" title="Add to wishlist"
+                    aria-label="Add to wishlist">♡</a>
+                {% endif %}
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <div class="product-meta">
+                    <div class="clamp-1">{{ product.name }}</div>
+                    <div class="muted">₹{{ product.price }}</div>
+                </div>
+                <div class="cluster">
+                    <a href="{{ product.get_absolute_url }}" class="button block">View details</a>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<h1 class="page-title">{% if search_query %}Results for "{{ search_query }}"{% elif category %}{{ category.name }}{%
+    else %}Products{% endif %}</h1>
+<div class="grid product-grid mt-2">
+    {% for product in products %}
+    <article class="card">
+        <div class="card-media">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+            <img src="{% static 'images/placeholder.png' %}" alt="Placeholder">
+            {% endif %}
+            {% if user.is_authenticated %}
+            {% if product.id in wishlist_product_ids %}
+            <a class="icon-button active" href="{% url 'wishlist_remove' product.id %}" title="Remove from wishlist"
+                aria-label="Remove from wishlist">♥</a>
+            {% else %}
+            <a class="icon-button" href="{% url 'wishlist_add' product.id %}" title="Add to wishlist"
+                aria-label="Add to wishlist">♡</a>
+            {% endif %}
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <div class="product-meta">
+                <div class="clamp-1">{{ product.name }}</div>
+                <div class="muted">₹{{ product.price }}</div>
+            </div>
+            <div class="cluster">
+                <a href="{{ product.get_absolute_url }}" class="button block">View details</a>
+            </div>
+        </div>
+    </article>
+    {% empty %}
+    <p class="muted">No products available.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+<div class="product-detail-grid">
+    <div class="product-image-card">
+        <div class="card-media">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+            <img src="https://via.placeholder.com/800x600?text=No+Image" alt="Placeholder">
+            {% endif %}
+            {% if user.is_authenticated %}
+            {% if is_in_wishlist %}
+            <a class="icon-button" href="{% url 'wishlist_remove' product.id %}" title="Remove from wishlist"
+                aria-label="Remove from wishlist">❤</a>
+            {% else %}
+            <a class="icon-button" href="{% url 'wishlist_add' product.id %}" title="Add to wishlist"
+                aria-label="Add to wishlist">❤</a>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="product-info-card">
+        <div class="card-body">
+            <h1 class="page-title">{{ product.name }}</h1>
+            <div class="product-price muted mb-2">₹{{ product.price }}</div>
+            <p class="product-description mb-3">{{ product.description }}</p>
+            <form action="{% url 'cart_add' product.id %}" method="post" class="stack">
+                {% csrf_token %}
+                {{ cart_product_form|crispy }}
+                <div class="product-actions">
+                    <button type="submit" class="button primary block">Add to bag</button>
+                    {% if user.is_authenticated %}
+                    {% if is_in_wishlist %}
+                    <a class="button block" href="{% url 'wishlist_remove' product.id %}">Remove from wishlist</a>
+                    {% else %}
+                    <a class="button block" href="{% url 'wishlist_add' product.id %}">Add to wishlist</a>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if similar_products %}
+<section class="recommendations-section similar-products-section">
+    <h2 class="section-title">🛍️ You May Also Like</h2>
+    <div class="grid product-grid recommendations-grid">
+        {% for product in similar_products %}
+        <article class="card">
+            <div class="card-media">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                <img src="{% static 'images/placeholder.png' %}" alt="Placeholder">
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <div class="product-meta">
+                    <div class="clamp-1">{{ product.name }}</div>
+                    <div class="muted">₹{{ product.price }}</div>
+                </div>
+                <div class="cluster">
+                    <a href="{{ product.get_absolute_url }}" class="button block">View details</a>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}
