@@ -955,6 +955,114 @@
   }
 },
 {
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$BVgZxfhv2TQHorEU6Xtal6$m74gcglStOT4G0Rbi57ARqFMjUAD9uDgttF+tfUhdvQ=",
+    "last_login": "2025-09-17T12:53:16.989Z",
+    "is_superuser": true,
+    "username": "mahesh09",
+    "first_name": "",
+    "last_name": "",
+    "email": "maheshnath2143@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-12T08:15:47.423Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$CsYE8czHUTRIVI0zLSobl2$cYHWyUI3YEVr97dZwKAHA8MN+nPXcskY7E0J6fiGsqc=",
+    "last_login": "2025-09-17T11:48:29.592Z",
+    "is_superuser": false,
+    "username": "Mahesh",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-17T11:48:29.218Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$jUa4M53gPkS83rr3C523v5$RFiZRPaTvauf5+ZAQVwoWEWkqmTqYhf6P/m3PsHNtxU=",
+    "last_login": "2025-10-10T11:03:25.443Z",
+    "is_superuser": false,
+    "username": "test01",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-10T10:17:39.128Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$0NKVhfSmXxnMWugmqt6Nkd$9Rm23Ljop3sIcya3kTF/oC6n2fKb7FWSdhWs7Zd4WZE=",
+    "last_login": "2026-01-07T16:56:50.990Z",
+    "is_superuser": false,
+    "username": "testuser123",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-07T16:27:03.994Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$jEsv5ZUE74mT5x1umW7Zhm$3Ko2NV0T6vZT1RLmAeWdYthyOq4gdc8kSE2zIRgmgug=",
+    "last_login": "2026-01-08T10:02:49.620Z",
+    "is_superuser": false,
+    "username": "mahesh_23",
+    "first_name": "",
+    "last_name": "",
+    "email": "mahesh23@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-08T10:02:48.927Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$zhqPcxqdhbpNdaNwLGc29z$k0Y4yqhfW5QtnIJTNu/NzpIiL8CQ1OHdN6a9pRy/SnY=",
+    "last_login": "2026-01-09T11:31:22.367Z",
+    "is_superuser": false,
+    "username": "mahesh9090",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-09T11:31:21.767Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "accounts.profile",
   "pk": 1,
   "fields": {
@@ -1030,297 +1138,6 @@
     "location": "",
     "alternate_mobile": "",
     "hint_name": ""
-  }
-},
-{
-  "model": "orders.order",
-  "pk": 1,
-  "fields": {
-    "user": 1,
-    "first_name": "Mahesh",
-    "last_name": "Nath",
-    "email": "www.maheshnath451@gmail.com",
-    "address": "Near new civil , New Boys Hostel Goverenment Polytechnic Himatnagar",
-    "postal_code": "383001",
-    "city": "Himatnagar",
-    "phone": "8980485677",
-    "created": "2025-09-12T15:08:31.281Z",
-    "updated": "2025-09-12T15:08:31.282Z",
-    "paid": false
-  }
-},
-{
-  "model": "orders.order",
-  "pk": 2,
-  "fields": {
-    "user": 1,
-    "first_name": "Mahesh",
-    "last_name": "Nath",
-    "email": "www.maheshnath451@gmail.com",
-    "address": "Near new civil , New Boys Hostel Goverenment Polytechnic Himatnagar",
-    "postal_code": "383001",
-    "city": "Himatnagar",
-    "phone": "8980485677",
-    "created": "2025-09-17T12:15:19.745Z",
-    "updated": "2025-09-17T12:15:19.745Z",
-    "paid": false
-  }
-},
-{
-  "model": "orders.order",
-  "pk": 3,
-  "fields": {
-    "user": 1,
-    "first_name": "Mahesh",
-    "last_name": "Nath",
-    "email": "www.maheshnath451@gmail.com",
-    "address": "Near new civil , New Boys Hostel Goverenment Polytechnic Himatnagar",
-    "postal_code": "383001",
-    "city": "Himatnagar",
-    "phone": "8980485677",
-    "created": "2025-09-17T12:33:56.080Z",
-    "updated": "2025-09-17T12:33:56.080Z",
-    "paid": false
-  }
-},
-{
-  "model": "orders.order",
-  "pk": 4,
-  "fields": {
-    "user": 1,
-    "first_name": "Mahesh",
-    "last_name": "Nath",
-    "email": "www.maheshnath451@gmail.com",
-    "address": "Near new civil , New Boys Hostel Goverenment Polytechnic Himatnagar",
-    "postal_code": "383001",
-    "city": "Himatnagar",
-    "phone": "8980485677",
-    "created": "2025-09-17T13:04:00.748Z",
-    "updated": "2025-09-17T13:04:00.748Z",
-    "paid": false
-  }
-},
-{
-  "model": "orders.order",
-  "pk": 5,
-  "fields": {
-    "user": 3,
-    "first_name": "jone",
-    "last_name": "doe",
-    "email": "test@gmail.com",
-    "address": "jodhpuriya prratapgarh rajasthan",
-    "postal_code": "382604",
-    "city": "pratapgarh",
-    "phone": "8980485677",
-    "created": "2025-10-10T10:20:17.093Z",
-    "updated": "2025-10-10T10:20:17.093Z",
-    "paid": false
-  }
-},
-{
-  "model": "orders.order",
-  "pk": 6,
-  "fields": {
-    "user": 4,
-    "first_name": "Mahesh",
-    "last_name": "Nath",
-    "email": "testuser@example.com",
-    "address": "08 Darbar faliyu Malekpur",
-    "postal_code": "389235",
-    "city": "Lunawada",
-    "phone": "8980485677",
-    "created": "2026-01-07T17:34:04.269Z",
-    "updated": "2026-01-07T17:34:04.269Z",
-    "paid": false
-  }
-},
-{
-  "model": "orders.orderitem",
-  "pk": 1,
-  "fields": {
-    "order": 1,
-    "product": 52,
-    "price": "187.00",
-    "quantity": 3
-  }
-},
-{
-  "model": "orders.orderitem",
-  "pk": 2,
-  "fields": {
-    "order": 2,
-    "product": 52,
-    "price": "187.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "orders.orderitem",
-  "pk": 3,
-  "fields": {
-    "order": 3,
-    "product": 59,
-    "price": "899.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "orders.orderitem",
-  "pk": 4,
-  "fields": {
-    "order": 4,
-    "product": 42,
-    "price": "1599.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "orders.orderitem",
-  "pk": 5,
-  "fields": {
-    "order": 5,
-    "product": 52,
-    "price": "187.00",
-    "quantity": 2
-  }
-},
-{
-  "model": "orders.orderitem",
-  "pk": 6,
-  "fields": {
-    "order": 6,
-    "product": 52,
-    "price": "187.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "orders.orderitem",
-  "pk": 7,
-  "fields": {
-    "order": 6,
-    "product": 5,
-    "price": "550.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 5,
-  "fields": {
-    "user": 1,
-    "product": 52,
-    "added_date": "2025-09-17T12:31:06.383Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 8,
-  "fields": {
-    "user": 1,
-    "product": 57,
-    "added_date": "2025-09-17T12:32:44.313Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 9,
-  "fields": {
-    "user": 1,
-    "product": 59,
-    "added_date": "2025-09-17T12:32:48.325Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 13,
-  "fields": {
-    "user": 1,
-    "product": 41,
-    "added_date": "2025-09-17T12:37:56.482Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 14,
-  "fields": {
-    "user": 1,
-    "product": 42,
-    "added_date": "2025-09-17T13:03:24.587Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 15,
-  "fields": {
-    "user": 3,
-    "product": 41,
-    "added_date": "2025-10-10T10:17:54.294Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 16,
-  "fields": {
-    "user": 4,
-    "product": 52,
-    "added_date": "2026-01-07T16:33:26.767Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 17,
-  "fields": {
-    "user": 4,
-    "product": 5,
-    "added_date": "2026-01-07T17:33:31.567Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 18,
-  "fields": {
-    "user": 6,
-    "product": 5,
-    "added_date": "2026-01-09T11:31:37.352Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 19,
-  "fields": {
-    "user": 6,
-    "product": 44,
-    "added_date": "2026-01-09T12:45:10.604Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 20,
-  "fields": {
-    "user": 6,
-    "product": 47,
-    "added_date": "2026-01-09T13:43:20.123Z"
-  }
-},
-{
-  "model": "wishlist.wishlist",
-  "pk": 21,
-  "fields": {
-    "user": 6,
-    "product": 19,
-    "added_date": "2026-01-09T13:43:30.503Z"
-  }
-},
-{
-  "model": "recommendations.productview",
-  "pk": 1,
-  "fields": {
-    "user": 6,
-    "session_key": null,
-    "product": 45,
-    "viewed_at": "2026-01-09T13:25:47.053Z",
-    "view_count": 1
   }
 }
 ]
